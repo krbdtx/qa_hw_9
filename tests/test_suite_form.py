@@ -1,39 +1,41 @@
-from selene import browser,  be, have, by
-import os.path
+from appfunc.reg_page import RegistrationPage
+
+reg_page = RegistrationPage()
 
 def test_fill_form():
     """
-    Заполнение формы
+    Заполнение формы PageObjects
     Успешно заполнено
     """
-    browser.open('/automation-practice-form')
+    reg_page.open_win()
 
-    browser.element('#firstName').type('FirstNameInput')
-    browser.element('#lastName').type('LastNameInput')
-    browser.element('#userEmail').type('emailName@contoso.com')
-    browser.element('[for="gender-radio-2"]').click()
-    browser.element('#userNumber').type('0123456789')
-    browser.element('#dateOfBirthInput').click()
-    browser.element('.react-datepicker__month-select').click().element(by.text('May')).click()
-    browser.element('.react-datepicker__year-select').click().element(by.text('1970')).click()
-    browser.element('.react-datepicker__day--029').click()
-    browser.element('#subjectsInput').should(be.blank).type('Arts').press_enter()
-    browser.element('[for="hobbies-checkbox-2"]').click()
-    browser.element('#uploadPicture').send_keys(os.path.abspath('img1.jpg'))
-    browser.element('#currentAddress').should(be.blank).type("City Msc Random street")
-    browser.element('#state').click().element(by.text('NCR')).click()
-    browser.element('#city').click().element(by.text('Delhi')).click()
-    browser.element('#submit').click()
+    reg_page.fill_first_name('FirstNameInput')
+    reg_page.fill_last_name('LastNameInput')
+    reg_page.fill_email('emailName@contoso.com')
+    reg_page.fill_gender('Female')
+    reg_page.fill_user_number('0123456789')
+    reg_page.fill_birthdate('1970', 'May', '29')
+    reg_page.fill_subjects('Arts')
+    reg_page.fill_hobbies('Reading')
+    reg_page.fill_img('img1.jpg')
+    reg_page.fill_current_address('City Msc Random street')
+    reg_page.fill_state('NCR')
+    reg_page.fill_city('Delhi')
+    reg_page.submit_reg()
 
-    browser.element('.modal-header').should(have.text("Thanks for submitting the form"))
-    browser.element("tbody tr:nth-child(1) td:nth-child(2)").should(have.text('FirstNameInput LastNameInput'))
-    browser.element("tbody tr:nth-child(2) td:nth-child(2)").should(have.text('emailName@contoso.com'))
-    browser.element("tbody tr:nth-child(3) td:nth-child(2)").should(have.text('Female'))
-    browser.element("tbody tr:nth-child(4) td:nth-child(2)").should(have.text('0123456789'))
-    browser.element("tbody tr:nth-child(5) td:nth-child(2)").should(have.text('29 April,1970'))
-    browser.element("tbody tr:nth-child(6) td:nth-child(2)").should(have.text('Arts'))
-    browser.element("tbody tr:nth-child(7) td:nth-child(2)").should(have.text('Reading'))
-    browser.element("tbody tr:nth-child(8) td:nth-child(2)").should(have.text('img1.jpg'))
-    browser.element("tbody tr:nth-child(9) td:nth-child(2)").should(have.text('City Msc Random street'))
-    browser.element("tbody tr:nth-child(10) td:nth-child(2)").should(have.text('NCR Delhi'))
+    reg_page.should_reg_user(
+        'FirstNameInput',
+        'LastNameInput',
+        'emailName@contoso.com',
+        'Female',
+        '0123456789',
+        '29 May,1970',
+        'Arts',
+        'Reading',
+        'img1.jpg',
+        'City Msc Random street',
+        'NCR',
+        'Delhi'
+    )
+
 
