@@ -1,8 +1,42 @@
 from selene import browser, have, by, command
-from appfunc import resource
+from model import resource
+from data.users import User
 
 
 class RegistrationPage:
+
+    def reg_user(self, user: User):
+        (self.fill_first_name(user.first_name)
+         .fill_last_name(user.last_name)
+         .fill_email(user.email)
+         .fill_gender(user.gender)
+         .fill_user_number(user.phone_number)
+         .fill_birthdate(user.year, user.month, user.day)
+         .fill_subjects(user.subjects)
+         .fill_hobbies(user.hobbies)
+         .fill_img(user.img)
+         .fill_current_address(user.address)
+         .fill_state(user.state)
+         .fill_city(user.city)
+         .submit_reg()
+         )
+
+    def should_users_reg(self, user: User):
+        self.should_reg_user(
+            user.first_name,
+            user.last_name,
+            user.email,
+            user.gender,
+            user.phone_number,
+            f'{user.day} {user.month},{user.year} ',
+            user.subjects,
+            user.hobbies,
+            user.img,
+            user.address,
+            user.state,
+            user.city
+        )
+        return self
 
     def open_win(self) -> object:
         browser.open('/automation-practice-form')
