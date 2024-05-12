@@ -28,7 +28,7 @@ class RegistrationPage:
             user.email,
             user.gender,
             user.phone_number,
-            f'{user.day} {user.month},{user.year} ',
+            f'{user.day} {user.month},{user.year}',
             user.subjects,
             user.hobbies,
             user.img,
