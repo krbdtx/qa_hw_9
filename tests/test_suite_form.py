@@ -26,7 +26,7 @@ def test_fill_form():
     browser.element('#city').click().element(by.text('Delhi')).click()
     browser.element('#submit').perform(command.js.scroll_into_view).click()
 
-    browser.element('.modal-content').element('table').browser.all('tr').all('td').even.should(
+    browser.element('.modal-content').element('table').all('tr').all('td').even.should(
         have.exact_texts(
             'FirstNameInput LastNameInput',
             'emailName@contoso.com',
