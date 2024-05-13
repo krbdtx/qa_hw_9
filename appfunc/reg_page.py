@@ -13,15 +13,15 @@ class RegistrationPage:
         return self
 
     def fill_first_name(self, value):
-        browser.element('#firstName').set_value(value)
+        browser.element('#firstName').type(value)
         return self
 
     def fill_last_name(self, value):
-        browser.element('#lastName').set_value(value)
+        browser.element('#lastName').type(value)
         return self
 
     def fill_email(self, value):
-        browser.element('#userEmail').set_value(value)
+        browser.element('#userEmail').type(value)
         return self
 
     def fill_gender(self, value):
@@ -29,7 +29,7 @@ class RegistrationPage:
         return self
 
     def fill_user_number(self, value):
-        browser.element('#userNumber').set_value(value)
+        browser.element('#userNumber').type(value)
         return self
 
     def fill_birthdate(self, year, month, day):
@@ -40,7 +40,7 @@ class RegistrationPage:
         return self
 
     def fill_subjects(self, value):
-        browser.element('#subjectsInput').set_value(value).press_enter()
+        browser.element('#subjectsInput').type(value).press_enter()
         return self
 
     def fill_hobbies(self, value):
@@ -53,7 +53,7 @@ class RegistrationPage:
         return self
 
     def fill_current_address(self, value):
-        browser.element('#currentAddress').set_value(value)
+        browser.element('#currentAddress').type(value)
         return self
 
     def fill_state(self, value):
@@ -61,7 +61,7 @@ class RegistrationPage:
         return self
 
     def fill_city(self, value):
-        browser.element('#react-select-4-input').set_value(value).press_enter()
+        browser.element('#react-select-4-input').type(value).press_enter()
         return self
 
     def submit_reg(self):
