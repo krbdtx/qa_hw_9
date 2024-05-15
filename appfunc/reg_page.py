@@ -64,12 +64,12 @@ class RegistrationPage:
         browser.element('#react-select-4-input').type(value).press_enter()
         return self
 
-    def submit_reg(self):
+    def submit_registration(self):
         browser.element('#submit').perform(command.js.scroll_into_view).click()
         return self
 
-    def should_reg_user(self, first_name, last_name, email, gender, mobile, date_of_birth, subjects, hobbies, picture,
-                        current_address, state, city):
+    def should_registration_user(self, first_name, last_name, email, gender, mobile, date_of_birth, subjects, hobbies, picture,
+                                 current_address, state, city):
         browser.element('.table').all('td').even.should(have.exact_texts(
             f'{first_name} {last_name}',
             email,

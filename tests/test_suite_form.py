@@ -21,9 +21,9 @@ def test_fill_form():
         .fill_current_address('City Msc Random street')
         .fill_state('NCR')
         .fill_city('Delhi')
-        .submit_reg()
+        .submit_registration()
     )
-    registration_page.should_reg_user(
+    registration_page.should_registration_user(
         'FirstNameInput',
         'LastNameInput',
         'emailName@contoso.com',
