@@ -1,4 +1,4 @@
-from model.reg_page import RegistrationPage
+from model.reg_page import registration_page
 from data.users import User
 
 
@@ -14,17 +14,15 @@ test_user2 = User(first_name='Aaaaaaaa', last_name='Bbbbbbb', email='asdasd@adas
                   city='Panipat')
 
 
-reg_page = RegistrationPage()
-
 
 def test_fill_form_01():
     """
     Заполнение формы PageObjects test_user1
     Успешно заполнено
     """
-    reg_page.open_win()
-    reg_page.reg_user(test_user1)
-    reg_page.should_users_reg(test_user1)
+    registration_page.open_win()
+    registration_page.registration_user(test_user1)
+    registration_page.should_users_reg(test_user1)
 
 
 def test_fill_form_02():
@@ -32,6 +30,6 @@ def test_fill_form_02():
     Заполнение формы PageObjects test_user2
     Успешно заполнено
     """
-    reg_page.open_win()
-    reg_page.reg_user(test_user2)
-    reg_page.should_users_reg(test_user2)
+    registration_page.open_win()
+    registration_page.registration_user(test_user2)
+    registration_page.should_users_reg(test_user2)

@@ -1,11 +1,11 @@
-from selene import browser, have, by, command
+from selene import browser, have, command
 from model import resource
 from data.users import User
 
 
 class RegistrationPage:
 
-    def reg_user(self, user: User):
+    def registration_user(self, user: User):
         (self.fill_first_name(user.first_name)
          .fill_last_name(user.last_name)
          .fill_email(user.email)
@@ -18,11 +18,11 @@ class RegistrationPage:
          .fill_current_address(user.address)
          .fill_state(user.state)
          .fill_city(user.city)
-         .submit_reg()
+         .submit_registration()
          )
 
     def should_users_reg(self, user: User):
-        self.should_reg_user(
+        self.should_registration_user(
             user.first_name,
             user.last_name,
             user.email,
@@ -98,12 +98,12 @@ class RegistrationPage:
         browser.element('#react-select-4-input').set_value(value).press_enter()
         return self
 
-    def submit_reg(self):
+    def submit_registration(self):
         browser.element('#submit').perform(command.js.scroll_into_view).click()
         return self
 
-    def should_reg_user(self, first_name, last_name, email, gender, mobile, date_of_birth, subjects, hobbies, picture,
-                        current_address, state, city):
+    def should_registration_user(self, first_name, last_name, email, gender, mobile, date_of_birth, subjects, hobbies, picture,
+                                 current_address, state, city):
         browser.element('.table').all('td').even.should(have.exact_texts(
             f'{first_name} {last_name}',
             email,
@@ -117,3 +117,6 @@ class RegistrationPage:
             f'{state} {city}'
         ))
         return self
+
+
+registration_page = RegistrationPage()
