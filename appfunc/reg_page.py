@@ -83,3 +83,6 @@ class RegistrationPage:
             f'{state} {city}'
         ))
         return self
+
+
+registration_page = RegistrationPage()

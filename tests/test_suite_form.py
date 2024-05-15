@@ -1,15 +1,14 @@
-from appfunc.reg_page import RegistrationPage
+from appfunc.reg_page import registration_page
 
-reg_page = RegistrationPage()
 
 def test_fill_form():
     """
     Заполнение формы PageObjects
     Успешно заполнено
     """
-    reg_page.open_win()
+    registration_page.open_win()
     (
-        reg_page
+        registration_page
         .fill_first_name('FirstNameInput')
         .fill_last_name('LastNameInput')
         .fill_email('emailName@contoso.com')
@@ -24,7 +23,7 @@ def test_fill_form():
         .fill_city('Delhi')
         .submit_reg()
     )
-    reg_page.should_reg_user(
+    registration_page.should_reg_user(
         'FirstNameInput',
         'LastNameInput',
         'emailName@contoso.com',
