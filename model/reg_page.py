@@ -21,7 +21,7 @@ class RegistrationPage:
          .submit_registration()
          )
 
-    def should_users_reg(self, user: User):
+    def should_users_registration(self, user: User):
         self.should_registration_user(
             user.first_name,
             user.last_name,

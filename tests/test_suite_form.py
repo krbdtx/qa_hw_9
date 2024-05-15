@@ -22,7 +22,7 @@ def test_fill_form_01():
     """
     registration_page.open_win()
     registration_page.registration_user(test_user1)
-    registration_page.should_users_reg(test_user1)
+    registration_page.should_users_registration(test_user1)
 
 
 def test_fill_form_02():
@@ -32,4 +32,4 @@ def test_fill_form_02():
     """
     registration_page.open_win()
     registration_page.registration_user(test_user2)
-    registration_page.should_users_reg(test_user2)
+    registration_page.should_users_registration(test_user2)
